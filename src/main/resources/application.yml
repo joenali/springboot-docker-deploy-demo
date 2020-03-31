@@ -1,0 +1,13 @@
+server:
+  port: 7001
+spring:
+  application:
+    name: docker-deploy-demo
+  profiles:
+    active: dev
+  main:
+    allow-bean-definition-overriding: true
+
+
+
+
