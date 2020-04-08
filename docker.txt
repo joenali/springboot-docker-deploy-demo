@@ -1,0 +1,11 @@
+1. 解决docker 2375端口服务（Ubuntu 18.04）
+
+    a、vim /lib/systemd/system/docker.service（修改最好做个备份）
+    b、找到“ExecStart”，把该行修改为：
+    ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2375
+    解决docker 2375端口服务（Ubuntu 18.04）
+    c、systemctl daemon-reload
+    d、sudo service docker restart
+    e、查看开启端口情况
+    netstat -tunlp | grep 2375
+
