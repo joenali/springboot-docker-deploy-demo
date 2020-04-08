@@ -17,7 +17,9 @@
     <properties>
         <java.version>1.8</java.version>
         <skipTests>true</skipTests>
-        <docker.image.prefix>liunh</docker.image.prefix>
+        <docker.image.prefix>hanx</docker.image.prefix>
+        <docker.registry>127.0.0.1:5000</docker.registry>
+		<push.image>true</push.image>
     </properties>
 
     <dependencies>
@@ -76,9 +78,11 @@
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.0.0</version>
+
                 <configuration>
-                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                    <imageName>${docker.registry}/${project.groupId}/${project.artifactId}:${project.version}</imageName>
                     <dockerDirectory>src/main/docker</dockerDirectory>
+                    <pushImage>${push.image}</pushImage>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
